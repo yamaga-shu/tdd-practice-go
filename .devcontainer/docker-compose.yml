@@ -1,0 +1,12 @@
+name: tdd-practice-go
+services:
+  tdd-practice-go:
+    container_name: tdd-practice-go
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ../:/workspace/tdd-practice-go
+      - ./.ssh/:/home/vscode/.ssh/
+    stdin_open: true
+    tty: true
