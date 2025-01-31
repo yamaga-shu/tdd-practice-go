@@ -4,33 +4,33 @@ import "testing"
 
 func TestMultiplication(t *testing.T) {
 	five := &Dollar{5}
-	product := five.Times(2)
+	product := five.times(2)
 
 	got := product.amount
 	want := 10
 
 	if got != want {
-		t.Errorf("five.Times(2) == %d, want %d", got, want)
+		t.Errorf("five.times(2) == %d, want %d", got, want)
 	}
 
-	product = five.Times(3)
+	product = five.times(3)
 
 	got = product.amount
 	want = 15
 
 	if got != want {
-		t.Errorf("five.Times(3) == %d, want %d", got, want)
+		t.Errorf("five.times(3) == %d, want %d", got, want)
 	}
 }
 
 func TestEquals(t *testing.T) {
 	five := &Dollar{5}
 
-	if five.Equals(&Dollar{5}) != true {
-		t.Errorf("(&Dollar{5}).Equals(&Dollar{5}) == false, want true")
+	if five.equals(&Dollar{5}) != true {
+		t.Errorf("(&Dollar{5}).equals(&Dollar{5}) == false, want true")
 	}
 
-	if five.Equals(&Dollar{6}) != false {
-		t.Errorf("(&Dollar{5}).Equals(&Dollar{6}) == true, want false")
+	if five.equals(&Dollar{6}) != false {
+		t.Errorf("(&Dollar{5}).equals(&Dollar{6}) == true, want false")
 	}
 }
