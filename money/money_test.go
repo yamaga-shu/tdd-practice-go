@@ -5,14 +5,14 @@ import "testing"
 func TestMultiplication(t *testing.T) {
 	five := &Dollar{5}
 
-	got := *five.times(2)
+	got := *five.Times(2)
 	want := Dollar{10}
 
 	if got != want {
 		t.Errorf("five.times(2) == %v, want %v", got, want)
 	}
 
-	got = *five.times(3)
+	got = *five.Times(3)
 	want = Dollar{15}
 
 	if got != want {
@@ -23,11 +23,11 @@ func TestMultiplication(t *testing.T) {
 func TestEquals(t *testing.T) {
 	five := &Dollar{5}
 
-	if five.equals(&Dollar{5}) != true {
+	if five.Equals(&Dollar{5}) != true {
 		t.Errorf("(&Dollar{5}).equals(&Dollar{5}) == false, want true")
 	}
 
-	if five.equals(&Dollar{6}) != false {
+	if five.Equals(&Dollar{6}) != false {
 		t.Errorf("(&Dollar{5}).equals(&Dollar{6}) == true, want false")
 	}
 }
