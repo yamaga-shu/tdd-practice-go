@@ -31,3 +31,21 @@ func TestEquals(t *testing.T) {
 		t.Errorf("(&Dollar{5}).equals(&Dollar{6}) == true, want false")
 	}
 }
+
+func TestFrancMultiplication(t *testing.T) {
+	five := &Franc{5}
+
+	got := *five.Times(2)
+	want := Franc{10}
+
+	if got != want {
+		t.Errorf("five.times(2) == %v, want %v", got, want)
+	}
+
+	got = *five.Times(3)
+	want = Franc{15}
+
+	if got != want {
+		t.Errorf("five.times(3) == %v, want %v", got, want)
+	}
+}
