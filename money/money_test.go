@@ -4,22 +4,19 @@ import "testing"
 
 func TestMultiplication(t *testing.T) {
 	five := &Dollar{5}
-	product := five.times(2)
 
-	got := product.amount
-	want := 10
+	got := *five.times(2)
+	want := Dollar{10}
 
 	if got != want {
-		t.Errorf("five.times(2) == %d, want %d", got, want)
+		t.Errorf("five.times(2) == %v, want %v", got, want)
 	}
 
-	product = five.times(3)
-
-	got = product.amount
-	want = 15
+	got = *five.times(3)
+	want = Dollar{15}
 
 	if got != want {
-		t.Errorf("five.times(3) == %d, want %d", got, want)
+		t.Errorf("five.times(3) == %v, want %v", got, want)
 	}
 }
 
