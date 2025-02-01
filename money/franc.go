@@ -1,15 +1,15 @@
 package money
 
-type Franc struct {
+type franc struct {
 	amount int
 }
 
-// Times returns a new Franc instance multiplied by the specified rate.
-func (d *Franc) Times(multiplier int) *Franc {
-	return &Franc{d.amount * multiplier}
+// Times returns a new franc instance multiplied by the specified rate.
+func (d *franc) Times(multiplier int) *franc {
+	return &franc{d.amount * multiplier}
 }
 
-// Equals compares whether two Franc instances have the same amount.
-func (d *Franc) Equals(in *Franc) bool {
+// Equals compares whether two franc instances have the same amount.
+func (d *franc) Equals(in *franc) bool {
 	return d.amount == in.amount
 }

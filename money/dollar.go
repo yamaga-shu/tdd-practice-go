@@ -1,15 +1,15 @@
 package money
 
-type Dollar struct {
+type dollar struct {
 	amount int
 }
 
-// Times returns a new Dollar instance multiplied by the specified rate.
-func (d *Dollar) Times(multiplier int) *Dollar {
-	return &Dollar{d.amount * multiplier}
+// Times returns a new dollar instance multiplied by the specified rate.
+func (d *dollar) Times(multiplier int) *dollar {
+	return &dollar{d.amount * multiplier}
 }
 
-// Equals compares whether two Dollar instances have the same amount.
-func (d *Dollar) Equals(in *Dollar) bool {
+// Equals compares whether two dollar instances have the same amount.
+func (d *dollar) Equals(in *dollar) bool {
 	return d.amount == in.amount
 }
