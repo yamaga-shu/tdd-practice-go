@@ -3,17 +3,17 @@ package money
 import "testing"
 
 func TestMultiplication(t *testing.T) {
-	five := &Dollar{money{5}}
+	five := NewDollar(5)
 
-	got := *five.Times(2)
-	want := Dollar{money{10}}
+	got := five.Times(2)
+	want := NewDollar(10)
 
 	if got != want {
 		t.Errorf("five.times(2) == %v, want %v", got, want)
 	}
 
-	got = *five.Times(3)
-	want = Dollar{money{15}}
+	got = five.Times(3)
+	want = NewDollar(15)
 
 	if got != want {
 		t.Errorf("five.times(3) == %v, want %v", got, want)
@@ -21,29 +21,39 @@ func TestMultiplication(t *testing.T) {
 }
 
 func TestEquals(t *testing.T) {
-	five := &Dollar{money{5}}
-
-	if five.Equals(&Dollar{money{5}}) != true {
-		t.Errorf("(&Dollar{money{5}}).equals(&Dollar{money{5}}) == false, want true")
+	// Dollar
+	fiveDollar := NewDollar(5)
+	if fiveDollar.Equals(NewDollar(5)) != true {
+		t.Errorf("(NewDollar(5)).equals(NewDollar(5)) == false, want true")
 	}
 
-	if five.Equals(&Dollar{money{6}}) != false {
-		t.Errorf("(&Dollar{money{5}}).equals(&Dollar{money{6}}) == true, want false")
+	if fiveDollar.Equals(NewDollar(6)) != false {
+		t.Errorf("(NewDollar(5)).equals(NewDollar(6)}) == true, want false")
+	}
+
+	// Franc
+	fiveFranc := NewFranc(5)
+	if fiveFranc.Equals(NewFranc(5)) != true {
+		t.Errorf("(NewFranc(5)).equals(NewFranc(5)) == false, want true")
+	}
+
+	if fiveFranc.Equals(NewFranc(6)) != false {
+		t.Errorf("(NewFranc(5)).equals(NewFranc(6)) == true, want false")
 	}
 }
 
 func TestFrancMultiplication(t *testing.T) {
-	five := &Franc{money{5}}
+	five := NewFranc(5)
 
-	got := *five.Times(2)
-	want := Franc{money{10}}
+	got := five.Times(2)
+	want := NewFranc(10)
 
 	if got != want {
 		t.Errorf("five.times(2) == %v, want %v", got, want)
 	}
 
-	got = *five.Times(3)
-	want = Franc{money{15}}
+	got = five.Times(3)
+	want = NewFranc(15)
 
 	if got != want {
 		t.Errorf("five.times(3) == %v, want %v", got, want)
