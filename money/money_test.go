@@ -3,17 +3,17 @@ package money
 import "testing"
 
 func TestMultiplication(t *testing.T) {
-	five := NewDollar(5)
+	five := Dollar{Money{5}}
 
 	got := five.Times(2)
-	want := NewDollar(10)
+	want := Dollar{Money{10}}
 
 	if got != want {
 		t.Errorf("five.times(2) == %v, want %v", got, want)
 	}
 
 	got = five.Times(3)
-	want = NewDollar(15)
+	want = Dollar{Money{15}}
 
 	if got != want {
 		t.Errorf("five.times(3) == %v, want %v", got, want)
@@ -22,38 +22,38 @@ func TestMultiplication(t *testing.T) {
 
 func TestEquals(t *testing.T) {
 	// Dollar
-	fiveDollar := NewDollar(5)
-	if fiveDollar.Equals(NewDollar(5)) != true {
-		t.Errorf("(NewDollar(5)).equals(NewDollar(5)) == false, want true")
+	fiveDollar := Dollar{Money{5}}
+	if fiveDollar.Equals(Dollar{Money{5}}.Money) != true {
+		t.Errorf("(Dollar{Money{5}}.Money == Dollar{Money{5}}.Money) == false, want true")
 	}
 
-	if fiveDollar.Equals(NewDollar(6)) != false {
-		t.Errorf("(NewDollar(5)).equals(NewDollar(6)}) == true, want false")
+	if fiveDollar.Equals(Dollar{Money{6}}.Money) != false {
+		t.Errorf("(Dollar{Money{5}}.Money == Dollar{Money{6}}.Money) == true, want false")
 	}
 
 	// Franc
-	fiveFranc := NewFranc(5)
-	if fiveFranc.Equals(NewFranc(5)) != true {
-		t.Errorf("(NewFranc(5)).equals(NewFranc(5)) == false, want true")
+	fiveFranc := Franc{Money{5}}
+	if fiveFranc.Equals(Franc{Money{5}}.Money) != true {
+		t.Errorf("(Franc{Money{5}}.Money == Franc{Money{5}}.Money) == false, want true")
 	}
 
-	if fiveFranc.Equals(NewFranc(6)) != false {
-		t.Errorf("(NewFranc(5)).equals(NewFranc(6)) == true, want false")
+	if fiveFranc.Equals(Franc{Money{6}}.Money) != false {
+		t.Errorf("(Franc{Money{5}}.Money == Franc{Money{6}}.Money) == true, want false")
 	}
 }
 
 func TestFrancMultiplication(t *testing.T) {
-	five := NewFranc(5)
+	five := Franc{Money{5}}
 
 	got := five.Times(2)
-	want := NewFranc(10)
+	want := Franc{Money{10}}
 
 	if got != want {
 		t.Errorf("five.times(2) == %v, want %v", got, want)
 	}
 
 	got = five.Times(3)
-	want = NewFranc(15)
+	want = Franc{Money{15}}
 
 	if got != want {
 		t.Errorf("five.times(3) == %v, want %v", got, want)
