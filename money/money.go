@@ -1,7 +1,8 @@
 package money
 
 type Money struct {
-	amount int
+	amount   int
+	currency string
 }
 
 // Equals compares whether two money instances have the same amount.
