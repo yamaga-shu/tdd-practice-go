@@ -64,3 +64,21 @@ func TestFrancMultiplication(t *testing.T) {
 		t.Errorf("five.times(3) == %v, want %v", got, want)
 	}
 }
+
+func TestCurrency(t *testing.T) {
+	// Dollar
+	want := "USD"
+	got := NewDollar(1).currency
+
+	if got != want {
+		t.Errorf("NewDollar(1).currency == %s, want %s", got, want)
+	}
+
+	// Franc
+	want = "CHF"
+	got = NewFranc(1).currency
+
+	if got != want {
+		t.Errorf("NewFranc(1).currency == %s, want %s", got, want)
+	}
+}
