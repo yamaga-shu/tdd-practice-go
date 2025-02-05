@@ -10,22 +10,28 @@ func (m Money) Equals(in Money) bool {
 	return m == in
 }
 
-// NewDollar returns a new Dollar instance have the specified amount.
-func NewDollar(amount int) Dollar {
-	return Dollar{
-		Money{
-			amount:   amount,
-			currency: "USD",
-		},
+// Times returns a new Money instance multiplied by the specified rate.
+func (m Money) Times(multiplier int) Money {
+	return Money{
+		amount:   m.amount * multiplier,
+		currency: m.currency,
 	}
 }
 
-// NewFranc returns a new Franc instance have the specified amount.
-func NewFranc(amount int) Franc {
-	return Franc{
-		Money{
-			amount:   amount,
-			currency: "CHF",
-		},
+// NewMoney returns a new Money instance with the specified amount and currency.
+func NewMoney(amount int, currency string) Money {
+	return Money{
+		amount:   amount,
+		currency: currency,
 	}
+}
+
+// NewDollar returns a new Dollar instance have the specified amount.
+func NewDollar(amount int) Money {
+	return NewMoney(amount, "USD")
+}
+
+// NewFranc returns a new Franc instance have the specified amount.
+func NewFranc(amount int) Money {
+	return NewMoney(amount, "CHF")
 }
