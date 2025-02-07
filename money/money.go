@@ -19,7 +19,7 @@ func (m Money) Times(multiplier int) Money {
 }
 
 // Plus returns a new Money instance with the sum of the current instance and the addend
-func (m Money) Plus(addend Money) Money {
+func (m Money) Plus(addend Money) Expression {
 	return Money{
 		amount:   m.amount + addend.amount,
 		currency: m.currency,
