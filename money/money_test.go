@@ -82,3 +82,12 @@ func TestCurrency(t *testing.T) {
 		t.Errorf("NewFranc(1).currency == %s, want %s", got, want)
 	}
 }
+
+func TestSimpleAddition(t *testing.T) {
+	want := NewDollar(10)
+	got := NewDollar(5).Plus(NewDollar(5))
+
+	if want != got {
+		t.Errorf("NewDollar(5).Plus(NewDollar(5)) == %v, want %v", got, want)
+	}
+}
