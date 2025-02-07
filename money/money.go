@@ -18,6 +18,14 @@ func (m Money) Times(multiplier int) Money {
 	}
 }
 
+// Plus returns a new Money instance with the sum of the current instance and the addend
+func (m Money) Plus(addend Money) Money {
+	return Money{
+		amount:   m.amount + addend.amount,
+		currency: m.currency,
+	}
+}
+
 // NewMoney returns a new Money instance with the specified amount and currency.
 func NewMoney(amount int, currency string) Money {
 	return Money{
