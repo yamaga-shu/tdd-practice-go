@@ -85,13 +85,41 @@ func TestCurrency(t *testing.T) {
 
 func TestSimpleAddition(t *testing.T) {
 	var five Money = NewDollar(5)
-	var sum Expression = five.Plus(five)
+	var sum Sum = five.Plus(five)
 	var bank Bank = NewBank()
-	var got Money = bank.Reduce(sum, "USD")
+
+	var got Money = bank.Reduce(sum, USD)
 
 	want := NewDollar(10)
 
 	if got != want {
 		t.Errorf("NewDollar(5).Plus(NewDollar(5)) == %v, want %v", got, want)
+	}
+}
+
+func TestRuduceSum(t *testing.T) {
+	sum := Sum{
+		augend: NewDollar(3),
+		addend: NewDollar(4),
+	}
+	var bank Bank = NewBank()
+
+	var got Money = bank.Reduce(sum, USD)
+
+	want := NewDollar(7)
+
+	if got != want {
+		t.Errorf("bank.Reduce(sum, USD) == %v, want %v", got, want)
+	}
+}
+
+func TestReduceMoney(t *testing.T) {
+	bank := NewBank()
+	got := bank.Reduce(NewDollar(1), USD)
+
+	want := NewDollar(1)
+
+	if got != want {
+		t.Errorf("bank.Reduce(NewDollar(1), USD) == %v, want %v", got, want)
 	}
 }

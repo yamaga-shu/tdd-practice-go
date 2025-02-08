@@ -25,12 +25,17 @@ func (m Money) Times(multiplier int) Money {
 	}
 }
 
-// Plus returns a new Extention instance with the sum of the current instance and the addend
-func (m Money) Plus(addend Money) Expression {
-	return Money{
-		amount:   m.amount + addend.amount,
-		currency: m.currency,
+// Plus returns a new Sum instance with the sum of the current instance and the addend
+func (m Money) Plus(addend Money) Sum {
+	return Sum{
+		augend: m,
+		addend: addend,
 	}
+}
+
+// Reduce converts the Money instance to the specified currency and returns a new Money instance
+func (m Money) Reduce(to Currency) Money {
+	return NewMoney(m.amount, to)
 }
 
 // NewMoney returns a new Money instance with the specified amount and currency.
