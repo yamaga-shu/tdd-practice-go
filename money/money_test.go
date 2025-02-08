@@ -67,7 +67,7 @@ func TestFrancMultiplication(t *testing.T) {
 
 func TestCurrency(t *testing.T) {
 	// Dollar
-	want := "USD"
+	want := USD
 	got := NewDollar(1).currency
 
 	if got != want {
@@ -75,7 +75,7 @@ func TestCurrency(t *testing.T) {
 	}
 
 	// Franc
-	want = "CHF"
+	want = CHF
 	got = NewFranc(1).currency
 
 	if got != want {
