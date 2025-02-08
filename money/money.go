@@ -34,8 +34,10 @@ func (m Money) Plus(addend Money) Sum {
 }
 
 // Reduce converts the Money instance to the specified currency and returns a new Money instance
-func (m Money) Reduce(to Currency) Money {
-	return NewMoney(m.amount, to)
+func (m Money) Reduce(bank Bank, to Currency) Money {
+	rate := bank.Rate(m.currency, to)
+
+	return NewMoney(m.amount/rate, to)
 }
 
 // NewMoney returns a new Money instance with the specified amount and currency.

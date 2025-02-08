@@ -1,5 +1,5 @@
 package money
 
 type Expression interface {
-	Reduce(to Currency) Money
+	Reduce(bank Bank, to Currency) Money
 }
