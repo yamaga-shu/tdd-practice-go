@@ -5,5 +5,5 @@
 - [x] Bank.Reduce(Money)
 - [x] Moneyを変換して換算を行う
 - [x] Reduce(Bank, Currency)
-- [ ] Sum.Plus
+- [x] Sum.Plus
 - [ ] Expression.Times

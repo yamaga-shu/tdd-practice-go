@@ -6,7 +6,7 @@ type Sum struct {
 }
 
 func (s Sum) Plus(addend Expression) Expression {
-	return nil
+	return NewSum(s, addend)
 }
 
 func (s Sum) Reduce(bank Bank, to Currency) Money {
