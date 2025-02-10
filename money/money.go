@@ -18,19 +18,13 @@ func (m Money) Equals(in Money) bool {
 }
 
 // Times returns a new Money instance multiplied by the specified rate.
-func (m Money) Times(multiplier int) Money {
-	return Money{
-		amount:   m.amount * multiplier,
-		currency: m.currency,
-	}
+func (m Money) Times(multiplier int) Expression {
+	return NewMoney(m.amount*multiplier, m.currency)
 }
 
 // Plus returns a new Sum instance with the sum of the current instance and the addend
-func (m Money) Plus(addend Money) Sum {
-	return Sum{
-		augend: m,
-		addend: addend,
-	}
+func (m Money) Plus(addend Expression) Expression {
+	return NewSum(m, addend)
 }
 
 // Reduce converts the Money instance to the specified currency and returns a new Money instance
