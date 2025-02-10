@@ -5,6 +5,10 @@ type Sum struct {
 	addend Expression // 加数
 }
 
+func (s Sum) Times(multiplier int) Expression {
+	return NewSum(s.augend.Times(multiplier), s.addend.Times(multiplier))
+}
+
 func (s Sum) Plus(addend Expression) Expression {
 	return NewSum(s, addend)
 }

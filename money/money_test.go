@@ -175,3 +175,19 @@ func TestSumPlusMoney(t *testing.T) {
 		t.Errorf("bank.Reduce(sum, USD) == %v, want %v", got, want)
 	}
 }
+
+func TestSumTimes(t *testing.T) {
+	var fiveDollar Expression = NewDollar(5)
+	var tenFranc Expression = NewFranc(10)
+	var bank Bank = NewBank()
+	bank.AddRate(CHF, USD, 2)
+	var sum Expression = NewSum(fiveDollar, tenFranc).Times(2)
+
+	got := bank.Reduce(sum, USD)
+
+	want := NewDollar(20)
+
+	if got != want {
+		t.Errorf("bank.Reduce(sum, USD) == %v, want %v", got, want)
+	}
+}
