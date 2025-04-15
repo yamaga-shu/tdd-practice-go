@@ -7,6 +7,5 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ../:/workspace/tdd-practice-go
-      - ./.ssh/:/home/vscode/.ssh/
     stdin_open: true
     tty: true
